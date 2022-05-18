@@ -6,8 +6,6 @@ import (
 	openapi "github.com/shipink/golang-openapi-generator"
 )
 
-type openAPIRoutes []openapi.Route
-
 type Request struct {
 	Name string `json:"name"`
 }
@@ -22,16 +20,16 @@ type ErrorResponse struct {
 	Message string `json:"message"`
 }
 
-var OpenAPIRoutes = openAPIRoutes{
-	openapi.Route{
+func main() {
+	var routes []openapi.Route
+
+	routes = append(routes, openapi.Route{
 		Method:          http.MethodGet,
 		Path:            "/endpoint",
 		Request:         new(Request),
 		SuccessResponse: new(SuccessResponse),
 		ErrorResponse:   new(ErrorResponse),
-	},
-}
+	})
 
-func main() {
-	openapi.Generate("My Example API", OpenAPIRoutes)
+	openapi.Generate("My Example API", routes)
 }
