@@ -1,6 +1,6 @@
 # Golang OpenAPI specification generator
 
-Generate a openapi specification easily with golang codes.
+Generate an openapi specification easily with golang codes.
 
 ## Usage
 
